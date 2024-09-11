@@ -52,10 +52,15 @@ body {
 .Item-title {
   width: 100%;
   padding: 20px 10px;
+  display: flex;
 }
 
 .Item-actions {
   display: flex;
   justify-content: flex-end;
   padding: 20px 20px 20px 10px;
+}
+
+.Item-click-count {
+  margin-left: 10px;
 }

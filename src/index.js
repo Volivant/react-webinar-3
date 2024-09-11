@@ -6,14 +6,15 @@ import Store from './store.js';
 
 const store = new Store({
   list: [
-    { code: 1, title: 'Название элемента' },
-    { code: 2, title: 'Некий объект' },
-    { code: 3, title: 'Заголовок' },
-    { code: 4, title: 'Очень длинное название элемента из семи слов' },
-    { code: 5, title: 'Запись' },
-    { code: 6, title: 'Шестая запись' },
-    { code: 7, title: 'Седьмая запись' },
+    { code: 1, title: 'Название элемента', clickCount: 0 },
+    { code: 2, title: 'Некий объект', clickCount: 0 },
+    { code: 3, title: 'Заголовок', clickCount: 0 },
+    { code: 4, title: 'Очень длинное название элемента из семи слов', clickCount: 0 },
+    { code: 5, title: 'Запись', clickCount: 0 },
+    { code: 6, title: 'Шестая запись', clickCount: 0 },
+    { code: 7, title: 'Седьмая запись', clickCount: 0 },
   ],
+  key: 7, // поле для хранения последнего уникального кода
 });
 
 const root = createRoot(document.getElementById('root'));
