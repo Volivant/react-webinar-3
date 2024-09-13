@@ -1,5 +1,5 @@
 import React from 'react';
-import { createElement } from './utils.js';
+import { caseNumber } from './utils.js';
 import './styles.css';
 
 /**
@@ -29,7 +29,7 @@ function App({ store }) {
                 <div className="Item-code">{item.code}</div>
                 <div className="Item-title">{item.title}
                   {item.clickCount != 0 &&
-                    <div className='Item-click-count'> | Выделяли {item.clickCount} раз</div>
+                    <div className='Item-click-count'> | Выделяли {item.clickCount} {caseNumber(item.clickCount)}</div>
                   }
                 </div>
 

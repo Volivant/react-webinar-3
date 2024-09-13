@@ -1,3 +1,4 @@
+import { generateUniqCode } from "./utils";
 /**
  * Хранилище состояния приложения
  */
@@ -45,8 +46,7 @@ class Store {
     this.setState({
       ...this.state,
       // list: [...this.state.list, { code: this.state.list.length + 1, title: 'Новая запись' }],
-      list: [...this.state.list, {code: this.state.key + 1, title: 'Новая запись' }],
-      key: this.state.key + 1,// увеличиваем уникальный код на 1
+      list: [...this.state.list, {code: generateUniqCode(this.state.list.map(object => object.code)), title: 'Новая запись', clickCount: 0 }],
     });
   }
 

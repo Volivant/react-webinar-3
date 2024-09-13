@@ -26,3 +26,26 @@ export function createElement(name, props = {}, ...children) {
 
   return element;
 }
+
+export function generateUniqCode(code) {
+  return Math.max(...code)+1;
+}
+
+export function caseNumber(number) {
+  const arrNumber = Array.from(String(number)).map(i=>Number(i))
+  const lastDigit = arrNumber[arrNumber.length-1];
+  const secondToLastDigit = (number < 10 ? 0 : arrNumber[arrNumber.length-2]);
+  if (secondToLastDigit == 1) {
+    return 'раз';
+  } else {
+    switch (lastDigit) {
+      case 2:
+      case 3:
+      case 4:
+        return 'раза';
+      default:
+        return 'раз';
+    }
+  }
+
+}
