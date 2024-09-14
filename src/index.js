@@ -14,6 +14,7 @@ const store = new Store({
     { code: 6, title: 'Шестая запись', clickCount: 0 },
     { code: 7, title: 'Седьмая запись', clickCount: 0 },
   ],
+  nextCode: 8, // поле для хранения следующего кода
 });
 
 const root = createRoot(document.getElementById('root'));
