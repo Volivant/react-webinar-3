@@ -1,0 +1,45 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.modal-dialog {
+  width: 100%;
+  max-width: 90vw;
+  background: white;
+  position: relative;
+  margin: 0 20px;
+  max-height: calc(100% - 40px);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slide-in;
+  animation-duration: 0.5s;
+}
+
+.modal-dialog-btn {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+}
+
+.modal-sum {
+  align-self: self-end;
+  margin-right: 90px;
+  font-weight: bold;
+  padding: 40px 0;
+}

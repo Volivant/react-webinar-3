@@ -25,28 +25,23 @@ export const generateCode = (function (start = 0) {
   return () => ++start;
 })();
 
-/**
- * Генератор чисел с шагом 1
- * Вариант с генератором.
- * Сразу создаётся генератор и возвращается функция для получения следующего значения генератора
- * @returns {Number}
- */
-export const generateCode1 = (function (start = 0) {
-  function* realGenerator(start) {
-    while (true) {
-      yield ++start;
+export function caseNumber(number) {
+  const arrNumber = Array.from(String(number)).map(i=>Number(i))
+  const lastDigit = arrNumber[arrNumber.length-1];
+  const secondToLastDigit = (number < 10 ? 0 : arrNumber[arrNumber.length-2]);
+  if (secondToLastDigit == 1) {
+    return 'товаров';
+  } else {
+    switch (lastDigit) {
+      case 1:
+        return 'товар';
+      case 2:
+      case 3:
+      case 4:
+        return 'товара';
+      default:
+        return 'товаров';
     }
   }
 
-  const gen = realGenerator(start);
-  return () => gen.next().value;
-})();
-
-/**
- * Генератор чисел с шагом 1
- * Вариант с использованием функции как объекта для хранения значения value
- * @returns {Number}
- */
-export function generateCode2() {
-  return generateCode2.value ? ++generateCode2.value : (generateCode2.value = 1);
 }

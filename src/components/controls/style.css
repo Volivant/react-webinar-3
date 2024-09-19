@@ -3,3 +3,12 @@
   justify-content: flex-end;
   padding: 20px;
 }
+
+.Controls-basket {
+  padding: 0;
+}
+
+.Controls-basket-content {
+  padding: 0 20px;
+  font-weight: bold;
+}
