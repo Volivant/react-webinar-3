@@ -13,8 +13,7 @@
 }
 
 .modal-dialog {
-  width: 100%;
-  max-width: 90vw;
+  width: 960px;
   background: white;
   position: relative;
   margin: 0 20px;
@@ -41,5 +40,6 @@
   align-self: self-end;
   margin-right: 90px;
   font-weight: bold;
-  padding: 40px 0;
+  padding-top: 20px;
+  padding-bottom: 60px;
 }

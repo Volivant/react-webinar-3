@@ -1,23 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import Head from "../head";
-import List from "../list";
 import './style.css';
 
-function ModalList({ isVisible = false, listBasket, onDeleteBasketItem, onCloseBasket, sumBasket }) {
+function ModalList({ isVisible = false, children}) {
   return !isVisible ? null : (
     <div className="modal">
       <div className="modal-dialog">
-        <Head title="Корзина" />
-        <button className="modal-dialog-btn" onClick={onCloseBasket}>Закрыть</button>
-        <List
-          list={listBasket}
-          onAppendBasketItem={onDeleteBasketItem}
-          btnTitle='Удалить'
-        />
-        <div className="modal-sum">
-          Итого: {Intl.NumberFormat("ru", {style: "currency", currency: "RUB", minimumFractionDigits: 0}).format(sumBasket)}
-        </div>
+        {children}
       </div>
     </div>
   )
@@ -25,13 +14,7 @@ function ModalList({ isVisible = false, listBasket, onDeleteBasketItem, onCloseB
 
 ModalList.propTypes = {
   isVisible: PropTypes.bool,
-  listBasket: PropTypes.arrayOf(
-    PropTypes.shape({
-      code: PropTypes.number,
-    }),
-  ).isRequired,
-  onDeleteBasketItem: PropTypes.func,
-  onCloseBasket: PropTypes.func,
+  children: PropTypes.node,
 };
 
 export default React.memo(ModalList);
