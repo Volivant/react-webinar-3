@@ -1,0 +1,25 @@
+.Pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.Pagination-cell {
+  padding: 5px 10px;
+}
+
+.Pagination-cell:hover {
+  background-color: rgb(225, 225, 225);
+  cursor: pointer;
+}
+
+.Pagination-cell--selected {
+  padding: 5px 10px;
+  background-color: rgb(0, 135, 233);
+  color:white;
+}
+
+.Pagination-dots {
+  padding: 5px;
+}

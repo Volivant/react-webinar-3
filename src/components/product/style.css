@@ -1,0 +1,50 @@
+.Product{
+  padding: 10px 40px;
+}
+
+.Product-description{
+  padding-bottom: 20px;
+}
+
+.Product-country{
+  padding-bottom: 20px;
+}
+
+.Product-country-title{
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+.Product-country-code{
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+.Product-category{
+  padding-bottom: 20px;
+}
+
+.Product-category-title{
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+.Product-edition{
+  padding-bottom: 20px;
+}
+
+.Product-edition-title{
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+.Product-price{
+  padding-bottom: 20px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.Product-price-title{
+  padding-left: 5px;
+  font-weight: bold;
+}

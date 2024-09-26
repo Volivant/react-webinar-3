@@ -6,7 +6,12 @@
   font-size: 18px;
 }
 
-.BasketTool-label {
+.BasketTool-home {
+  flex-grow: 1;
+}
+
+.BasketTool-lebel {
+  white-space: nowrap;
 }
 
 .BasketTool-total {

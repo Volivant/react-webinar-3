@@ -13,8 +13,8 @@ class Catalog extends StoreModule {
     };
   }
 
-  async load() {
-    const response = await fetch('/api/v1/articles');
+  async load(pageNumber) {
+    const response = await fetch('/api/v1/articles?limit=10&skip='+(pageNumber-1)*10);
     const json = await response.json();
     this.setState(
       {
