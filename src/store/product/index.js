@@ -3,6 +3,7 @@ import StoreModule from '../module';
 class Product extends StoreModule {
   initState() {
     return {
+      id: '',
       title: '',
       description: '',
       madeInTitle: '',
@@ -18,6 +19,7 @@ class Product extends StoreModule {
     this.setState(
       {
         ...this.getState(),
+        id: json.result._id,
         title: json.result.title,
         description: json.result.description,
         madeInTitle: json.result.madeIn.title,
@@ -28,6 +30,7 @@ class Product extends StoreModule {
       },
       'Загружено описание товара из АПИ',
     );
+    localStorage.setItem("productId",json.result._id);
     // console.log(json.result);
   }
 }

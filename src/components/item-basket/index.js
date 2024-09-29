@@ -18,7 +18,7 @@ function ItemBasket(props) {
     <div className={cn()}>
       {/*<div className={cn('code')}>{props.item._id}</div>*/}
       <div className={cn('title')}>
-        <Link to='/product'  onClick={callbacks.onLoadProduct}>
+        <Link to={props.path}  onClick={callbacks.onLoadProduct}>
           {props.item.title}
         </Link>
       </div>
@@ -46,6 +46,7 @@ ItemBasket.propTypes = {
 
 ItemBasket.defaultProps = {
   onRemove: () => {},
+  path: '/product',
 };
 
 export default memo(ItemBasket);

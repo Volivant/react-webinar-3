@@ -1,15 +1,16 @@
 .Head {
   height: 80px;
   background: #f5f5f5;
+  display: flex;
+  flex-direction: row;
 }
 
 .Head h1 {
   margin: 0;
   padding: 20px 20px 10px;
+  width: 100%;
 }
 
 .Head-lang{
-  position: absolute;
-  right: 20px;
-  top: 30px; 
+  margin: 20px;
 }

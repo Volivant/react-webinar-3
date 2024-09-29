@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { cn as bem } from '@bem-react/classname';
 import { createPagination } from '../../utils';
 import './style.css';
-import item from '../item';
 
 function Pagination({ total = 0, current = 0, onLoadPage =() => {} }) {
   const cn = bem('Pagination');

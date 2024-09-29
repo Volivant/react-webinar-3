@@ -10,6 +10,9 @@ class Catalog extends StoreModule {
   initState() {
     return {
       list: [],
+      current: 0,
+      limit: 10,
+      total: 0,
     };
   }
 
@@ -20,8 +23,18 @@ class Catalog extends StoreModule {
       {
         ...this.getState(),
         list: json.result.items,
+        current: pageNumber,
       },
       'Загружены товары из АПИ',
+    );
+    const responseCount = await fetch('/api/v1/articles?fields=items(_id),count');
+    const jsonCount = await responseCount.json();
+    this.setState(
+      {
+        ...this.getState(),
+        total: Math.ceil(jsonCount.result.count /this.getState().limit),
+      },
+      'Загружено общее кол-во товаров из АПИ',
     );
   }
 }

@@ -16,6 +16,7 @@ function Basket() {
     btnDel: state.lang.del,
     btnClose: state.lang.close,
     titleBasket: state.lang.basket,
+    totalBasket: state.lang.total,
   }));
 
   const callbacks = {
@@ -34,7 +35,8 @@ function Basket() {
           item={item} 
           onRemove={callbacks.removeFromBasket} 
           onLoadProduct={callbacks.loadProduct} 
-          btnDel={select.btnDel}/>;
+          btnDel={select.btnDel}
+          path={"/product"}/>;
       },
       [callbacks.removeFromBasket, callbacks.loadProduct, select.btnDel],
     ),
@@ -43,7 +45,7 @@ function Basket() {
   return (
     <ModalLayout title={select.titleBasket} onClose={callbacks.closeModal} btnClose={select.btnClose}>
       <List list={select.list} renderItem={renders.itemBasket} />
-      <BasketTotal sum={select.sum} />
+      <BasketTotal sum={select.sum} total={select.totalBasket} />
     </ModalLayout>
   );
 }

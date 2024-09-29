@@ -12,6 +12,17 @@ class Lang extends StoreModule {
       home: "Главная",
       del: "Удалить",
       close: "Закыть",
+      inBasket: "В корзине:",
+      empty: "пусто",
+      total: "Итого",
+      country: "Страна производитель:",
+      category: "Категория:",
+      edition: "Год выпуска:",
+      price: "Цена:",
+      country: "Страна производитель:",
+      category: "Категория:",
+      edition: "Год выпуска:",
+      price: "Цена:",
     };
   }
 

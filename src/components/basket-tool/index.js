@@ -1,18 +1,16 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { cn as bem } from '@bem-react/classname';
-import { Link } from 'react-router-dom';
 import { numberFormat, plural } from '../../utils';
+import Navigation from '../navigation';
 import './style.css';
 
-function BasketTool({ sum, amount, onOpen, btnGoto, title }) {
+function BasketTool({ sum, amount, onOpen, btnGoto, title, inBasket, empty }) {
   const cn = bem('BasketTool');
   return (
     <div className={cn()}>
-      <div className={cn('home')}>
-        <Link to='/'>{title}</Link>
-      </div>
-      <span className={cn('label')}>В корзине:</span>
+      <Navigation titleHome={title}/>
+      <span className={cn('label')}>{inBasket}</span>
       <span className={cn('total')}>
         {amount
           ? `${amount} ${plural(amount, {
@@ -20,7 +18,7 @@ function BasketTool({ sum, amount, onOpen, btnGoto, title }) {
               few: 'товара',
               many: 'товаров',
             })} / ${numberFormat(sum)} ₽`
-          : `пусто`}
+          : empty}
       </span>
       <button onClick={onOpen}>{btnGoto}</button>
     </div>

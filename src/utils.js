@@ -103,6 +103,13 @@ export function langArray(lang = 'RU') {
     home: "Главная",
     del: "Удалить",
     close: "Закыть",
+    inBasket: "В корзине:",
+    empty: "пусто",
+    total: "Итого",
+    country: "Страна производитель:",
+    category: "Категория:",
+    edition: "Год выпуска:",
+    price: "Цена:",
   }
   const langEN = {
     id: "EN",
@@ -113,6 +120,13 @@ export function langArray(lang = 'RU') {
     home: "Home",
     del: "Delete",
     close: "Close",
+    inBasket: "In the basket:",
+    empty: "empty",
+    total: "Total",
+    country: "Producing country:",
+    category: "Category:",
+    edition: "Edition:",
+    price: "Price:",
   }
   return (lang == 'RU' ?
     langRU:
