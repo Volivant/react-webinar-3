@@ -5,7 +5,7 @@ import { numberFormat, plural } from '../../utils';
 import Navigation from '../navigation';
 import './style.css';
 
-function BasketTool({ sum, amount, onOpen, btnGoto, title, inBasket, empty }) {
+function BasketTool({ sum, amount, onOpen, btnGoto, title, inBasket, empty, productOne, productFew, productMany }) {
   const cn = bem('BasketTool');
   return (
     <div className={cn()}>
@@ -14,9 +14,9 @@ function BasketTool({ sum, amount, onOpen, btnGoto, title, inBasket, empty }) {
       <span className={cn('total')}>
         {amount
           ? `${amount} ${plural(amount, {
-              one: 'товар',
-              few: 'товара',
-              many: 'товаров',
+              one: productOne,
+              few: productFew,
+              many: productMany,
             })} / ${numberFormat(sum)} ₽`
           : empty}
       </span>

@@ -40,6 +40,9 @@ function MainCatalog() {
     categoryLabel: state.lang.category,
     editionLabel: state.lang.edition,
     priceLabel: state.lang.price,
+    productOne: state.lang.one,
+    productFew: state.lang.few,
+    productMany: state.lang.many,
   }));
 
   const callbacks = {
@@ -80,6 +83,9 @@ function MainCatalog() {
         title={select.homePage}
         inBasket={select.inBasket}
         empty={select.empty}
+        productOne={select.productOne}
+        productFew={select.productFew}
+        productMany={select.productMany}
       />
       <List list={select.list} renderItem={renders.item} />
       <Pagination total={select.total} current={select.current} onLoadPage={callbacks.loadPage}/>

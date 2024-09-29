@@ -31,6 +31,9 @@ function MainProduct() {
     categoryLabel: state.lang.category,
     editionLabel: state.lang.edition,
     priceLabel: state.lang.price,
+    productOne: state.lang.one,
+    productFew: state.lang.few,
+    productMany: state.lang.many,
   }));
 
   const callbacks = {
@@ -57,6 +60,9 @@ function MainProduct() {
         title={select.homePage}
         inBasket={select.inBasket}
         empty={select.empty}
+        productOne={select.productOne}
+        productFew={select.productFew}
+        productMany={select.productMany}
       />
       <Product 
         title={select.productTitle} 

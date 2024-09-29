@@ -110,6 +110,9 @@ export function langArray(lang = 'RU') {
     category: "Категория:",
     edition: "Год выпуска:",
     price: "Цена:",
+    one: "товар",
+    few: "товара",
+    many: "товаров",
   }
   const langEN = {
     id: "EN",
@@ -127,6 +130,9 @@ export function langArray(lang = 'RU') {
     category: "Category:",
     edition: "Edition:",
     price: "Price:",
+    one: "goods",
+    few: "goods",
+    many: "goods",
   }
   return (lang == 'RU' ?
     langRU:

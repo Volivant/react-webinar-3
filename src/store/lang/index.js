@@ -23,6 +23,9 @@ class Lang extends StoreModule {
       category: "Категория:",
       edition: "Год выпуска:",
       price: "Цена:",
+      one: "товар",
+      few: "товара",
+      many: "товаров",
     };
   }
 
