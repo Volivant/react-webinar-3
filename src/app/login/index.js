@@ -9,22 +9,13 @@ import CatalogFilter from '../../containers/catalog-filter';
 import CatalogList from '../../containers/catalog-list';
 import LocaleSelect from '../../containers/locale-select';
 import ProfileInfo from '../../containers/profile-info';
+import LoginForm from '../../containers/login-form';
 
 /**
  * Главная страница - первичная загрузка каталога
  */
 function Main() {
   const store = useStore();
-
-  useInit(
-    () => {
-      store.actions.catalog.initParams();
-      store.actions.category.load();
-      store.actions.user.loadUserToken();
-    },
-    [],
-    true,
-  );
 
   const { t } = useTranslate();
 
@@ -35,8 +26,7 @@ function Main() {
         <LocaleSelect />
       </Head>
       <Navigation />
-      <CatalogFilter />
-      <CatalogList />
+      <LoginForm />
     </PageLayout>
   );
 }

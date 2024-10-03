@@ -14,5 +14,8 @@
   "basket.articles": {
     "one": "article",
     "other": "articles"
-  }
+  },
+  "profile.login": "LogIn",
+  "profile.logout": "LogOut",
+  "login.enter": "Login"
 }

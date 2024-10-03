@@ -1,0 +1,34 @@
+.FormLayout {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+  /* align-items: center; */
+}
+
+.FormLayout_side_start {
+  justify-content: flex-start;
+}
+
+.FormLayout_side_end {
+  justify-content: flex-end;
+}
+
+.FormLayout_side_between {
+  justify-content: space-between;
+}
+
+.FormLayout_padding_small {
+  padding: 10px;
+}
+
+.FormLayout_padding_medium {
+  padding: 20px;
+}
+
+.FormLayout-item {
+  margin: 10px 5px;
+}
