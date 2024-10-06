@@ -20,24 +20,17 @@ import ProfileCard from '../../components/profile-card';
 function Profile() {
   const store = useStore();
 
-  // Параметры из пути /articles/:id
-  const params = useParams();
-
   useInit(() => {
-    store.actions.article.load(params.id);
-  }, [params.id]);
+    store.actions.profile.loadUserProfile(select.user);
+  }, []);
 
   const select = useSelector(state => ({
-    user: state.user.data,
+    profile: state.profile.data,
     waiting: state.user.waiting,
+    user: state.user.token,
   }));
 
   const { t } = useTranslate();
-
-  const callbacks = {
-    // Добавление в корзину
-    addToBasket: useCallback(_id => store.actions.basket.addToBasket(_id), [store]),
-  };
 
   return (
     <PageLayout>
@@ -47,7 +40,7 @@ function Profile() {
       </Head>
       <Navigation />
       <Spinner active={select.waiting}>
-        <ProfileCard user={select.user} t={t} />
+        <ProfileCard user={select.profile} t={t} />
       </Spinner>
     </PageLayout>
   );

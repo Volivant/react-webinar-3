@@ -34,11 +34,11 @@ function ProfileInfo() {
   const { t } = useTranslate();
 
   const options = {
-    menu: useMemo(() => [{ key: 1, title: select.userName, link: '/profile' }], [t]),
+    menu: useMemo(() => [{ key: 1, title: select.userName, link: '/profile' }]),
   };
 
   return (
-    <SideLayout side="end" padding="medium">
+    <SideLayout side="end">
       <Menu items={options.menu} onNavigate={callbacks.onNavigate} />
       <ProfileTool
         action={select.userName ? 'logout' : 'login'}

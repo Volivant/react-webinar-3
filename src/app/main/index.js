@@ -20,7 +20,6 @@ function Main() {
     () => {
       store.actions.catalog.initParams();
       store.actions.category.load();
-      store.actions.user.loadUserToken();
     },
     [],
     true,

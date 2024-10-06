@@ -37,11 +37,7 @@ class CategoryState extends StoreModule {
         const childElements = arrayCategory.filter((item) => item.parent != null);
         childElements.forEach(item => {
           if (item.parent._id === parentId) {
-            let liderSim = '';
-            for (let i = 0; i < layerChild; i++) {
-              liderSim += '- ';
-            }
-            categoryList.push({value: item._id, title: liderSim + item.title});
+            categoryList.push({value: item._id, title: '- '.repeat(layerChild) + item.title});
             layerChild += 1;
             findChildCategory(categoryList, arrayCategory, item._id, layerChild);
             layerChild -= 1;

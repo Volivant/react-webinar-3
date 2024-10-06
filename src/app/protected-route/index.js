@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectedRoute = ({
     user,
@@ -10,7 +10,7 @@ const ProtectedRoute = ({
     if (!user) {
         return <Navigate to={redirectPath} replace/>;
     }
-    return children;
+    return children ? children : <Outlet />;
 };
 
 export default ProtectedRoute;

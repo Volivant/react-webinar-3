@@ -8,10 +8,16 @@ class UserState extends StoreModule {
     return {
       data: {},
       token: localStorage.getItem("userToken"),
-      input: {login: '', password: ''},
       error: '',
       waiting: false, // признак ожидания загрузки
     };
+  }
+
+  resetError() {
+    this.setState({
+      ...this.getState(),
+      error:'',
+    });
   }
 
   /**
@@ -40,6 +46,11 @@ class UserState extends StoreModule {
             }
           }
         );
+        if (!response.ok) {
+          let error = new Error('Некорректный ответ от сервера');
+          error.response = response;
+          throw error
+        }
         const json = await response.json();
         // Пользователь загружен успешно
         this.setState(
@@ -47,6 +58,7 @@ class UserState extends StoreModule {
             ...this.getState(),
             data: json.result,
             token: currentToken,
+            error: '',
             waiting: false,
           },
           'Загружен пользователь по токену из АПИ',
@@ -59,7 +71,7 @@ class UserState extends StoreModule {
         // @todo В стейт можно положить информацию об ошибке
         this.setState({
           ...this.getState(),
-          error: e.error,
+          error: e.statusText,
           waiting: false,
         });
       }
@@ -72,15 +84,15 @@ class UserState extends StoreModule {
    * Загрузка пользователя
    * @return {Promise<void>}
    */
-  async loadUser() {
+  async loadUser(_login, _password) {
     // Сброс текущего пользователя и установка признака ожидания загрузки
     this.setState({
       ...this.getState(),
       data: {},
       token: null,
+      error: '',
       waiting: true,
     });
-
     try {
       const response = await fetch(
         `/api/v1/users/sign`, {
@@ -89,11 +101,16 @@ class UserState extends StoreModule {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            "login": this.getState().input.login,
-            "password": this.getState().input.password
+            "login": _login,
+            "password": _password
           })
         }
       );
+      if (!response.ok) {
+        let error = new Error('Некорректный ответ от сервера');
+        error.response = response;
+        throw error
+      }
       const json = await response.json();
 
       // Пользователь загружен успешно
@@ -102,6 +119,7 @@ class UserState extends StoreModule {
           ...this.getState(),
           data: json.result.user,
           token: json.result.token,
+          error: '',
           waiting: false,
         },
         'Загружен пользователь из АПИ',
@@ -113,30 +131,10 @@ class UserState extends StoreModule {
       // @todo В стейт можно положить информацию об ошибке
       this.setState({
         ...this.getState(),
-        error: e,
+        error: e.response.statusText,
         waiting: false,
       });
     }
-  }
-
-  setLogin(_login) {
-    this.setState(
-      {
-        ...this.getState(),
-        input:{...this.getState().input, ..._login},
-      },
-      'получение логина для авторизации',
-    );
-  }
-
-  setPassword(_password) {
-    this.setState(
-      {
-        ...this.getState(),
-        input: {...this.getState().input, ..._password}
-      },
-      'получение пароля для авторизации',
-    );
   }
 
   /**
@@ -158,12 +156,18 @@ class UserState extends StoreModule {
             }
           }
         );
+        if (!response.ok) {
+          let error = new Error('Некорректный ответ от сервера');
+          error.response = response;
+          throw error
+        }
         // Пользователь  успешно вышел
         this.setState(
           {
             ...this.getState(),
             data: {},
             token: null,
+            error: '',
             waiting: false,
           },
           'Загружен пользователь по токену из АПИ',
@@ -176,7 +180,7 @@ class UserState extends StoreModule {
         // @todo В стейт можно положить информацию об ошибке
         this.setState({
           ...this.getState(),
-          error: e,
+          error: e.statusText,
           waiting: false,
         });
       }

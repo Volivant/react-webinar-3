@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import useStore from '../../hooks/use-store';
 import useTranslate from '../../hooks/use-translate';
 import useInit from '../../hooks/use-init';
@@ -14,8 +14,12 @@ import LoginForm from '../../containers/login-form';
 /**
  * Главная страница - первичная загрузка каталога
  */
-function Main() {
+function Login() {
   const store = useStore();
+
+  useEffect(() => {
+    store.actions.user.resetError();
+  }, []);
 
   const { t } = useTranslate();
 
@@ -31,4 +35,4 @@ function Main() {
   );
 }
 
-export default memo(Main);
+export default memo(Login);

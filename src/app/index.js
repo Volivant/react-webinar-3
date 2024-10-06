@@ -1,6 +1,8 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import useSelector from '../hooks/use-selector';
+import useInit from '../hooks/use-init';
+import useStore from '../hooks/use-store';
 import Main from './main';
 import Basket from './basket';
 import Article from './article';
@@ -15,6 +17,15 @@ import Login from './login';
 function App() {
   const activeModal = useSelector(state => state.modals.name);
   const authUser = useSelector(state => state.user.token) ? true : false;
+  const store = useStore();
+
+  useInit(
+    () => {
+      store.actions.user.loadUserToken();
+    },
+    [],
+    true,
+  );
 
   return (
     <>

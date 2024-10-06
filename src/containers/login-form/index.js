@@ -13,23 +13,22 @@ function LoginForm() {
   const store = useStore();
 
   const select = useSelector(state => ({
-    login: state.user.input.user,
-    password: state.user.input.password,
+    login: state.login.login,
+    password: state.login.password,
     authUser: state.user.token ? true : false,
-    errorLoadUser: state.user.error.message,
+    errorLoadUser: state.user.error,
   }));
 
   const callbacks = {
     // Ввод логина
-    onInputLogin: useCallback(login => store.actions.user.setLogin({ login }), [store]),
+    onInputLogin: useCallback(login => store.actions.login.setLogin(login), [store]),
     // Ввод пароля
-    onInputPassword: useCallback(password => store.actions.user.setPassword({ password }), [store]),
+    onInputPassword: useCallback(password => store.actions.login.setPassword(password), [store]),
     // Загрузка пользователя
-    onLoadUser: useCallback(() => store.actions.user.loadUser(), [store]),
+    onLoadUser: useCallback((login, password) => store.actions.user.loadUser(login, password), [store]),
   };
 
   const { t } = useTranslate();
-  const textError = select.errorLoadUser;
 
   return (
     <FormLayout justify-content="side_start">
@@ -47,7 +46,7 @@ function LoginForm() {
         delay={1000}
       />
       <div style={{color: 'red'}}>{select.errorLoadUser}</div>
-      <button onClick={callbacks.onLoadUser}>{t('login.enter')}</button>
+      <button onClick={()=>callbacks.onLoadUser(select.login, select.password)}>{t('login.enter')}</button>
     </FormLayout>
   );
 }
