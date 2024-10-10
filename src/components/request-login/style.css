@@ -1,0 +1,23 @@
+.RequestLogin {
+  font-size: medium;
+}
+
+.RequestLogin-LoginBtn {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.RequestLogin-CancelBtn {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: gray;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: medium;
+}

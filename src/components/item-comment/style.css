@@ -1,0 +1,41 @@
+.ItemComment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  transition: background-color 1s;
+  padding-left: 40px;
+  font-size: small;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.ItemComment-single {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.ItemComment-head {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ItemComment-user{
+  font-weight: bold;
+}
+
+.ItemComment-date{
+  padding-left: 10px;
+  color: grey;
+}
+.ItemComment-btn {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #069;
+  cursor: pointer;
+}
+
+h3 {
+  padding-left: 40px;
+}

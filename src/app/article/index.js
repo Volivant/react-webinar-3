@@ -10,9 +10,12 @@ import Spinner from '../../components/spinner';
 import ArticleCard from '../../components/article-card';
 import LocaleSelect from '../../containers/locale-select';
 import TopHead from '../../containers/top-head';
+import CommentsCard from '../../containers/comments-card';
 import { useDispatch, useSelector } from 'react-redux';
 import shallowequal from 'shallowequal';
 import articleActions from '../../store-redux/article/actions';
+import commentsActions from '../../store-redux/comments/actions';
+import listToTree from '../../utils/list-to-tree';
 
 function Article() {
   const store = useStore();
@@ -42,7 +45,7 @@ function Article() {
     addToBasket: useCallback(_id => store.actions.basket.addToBasket(_id), [store]),
   };
 
-  return (
+    return (
     <PageLayout>
       <TopHead />
       <Head title={select.article.title}>
@@ -51,6 +54,7 @@ function Article() {
       <Navigation />
       <Spinner active={select.waiting}>
         <ArticleCard article={select.article} onAdd={callbacks.addToBasket} t={t} />
+        <CommentsCard/>
       </Spinner>
     </PageLayout>
   );

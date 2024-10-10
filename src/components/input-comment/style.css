@@ -1,0 +1,15 @@
+.InputComment{
+  display: flex;
+  flex-direction: column;
+}
+
+.InputComment-btn{
+  max-width: 90px;
+  margin-right: 10px;
+}
+
+.InputComment-text{
+  height: 80px;
+  margin-bottom: 10px;
+  resize: none;
+}
