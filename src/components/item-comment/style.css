@@ -5,7 +5,19 @@
   align-items: flex-start;
   transition: background-color 1s;
   padding-left: 40px;
-  font-size: small;
+  font-size: 14px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.ItemComment-nonOffset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  transition: background-color 1s;
+  /* padding-left: 40px; */
+  font-size: 14px;
   box-sizing: border-box;
   width: 100%;
 }
@@ -18,16 +30,34 @@
 .ItemComment-head {
   display: flex;
   justify-content: flex-start;
+  margin-bottom: 10px;
 }
 
 .ItemComment-user{
   font-weight: bold;
 }
 
+.ItemComment-input{
+  box-sizing: border-box;
+  margin: 0 40px;
+  width: 95%;
+}
+
+.ItemComment-current-user{
+  font-weight: bold;
+  color: grey;
+}
+
 .ItemComment-date{
   padding-left: 10px;
   color: grey;
 }
+
+.ItemComment-text {
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
 .ItemComment-btn {
   background: none!important;
   border: none;

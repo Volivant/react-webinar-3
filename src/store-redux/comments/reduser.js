@@ -11,7 +11,7 @@ function reducer(state = initialState, action) {
       return { ...state, data: {}, count: 0, waiting: true };
 
     case 'comments/load-success':
-      return { ...state, data: action.payload.data, count: action.payload.count, waiting: false };
+      return { ...state, items: action.payload.items, count: action.payload.count, waiting: false };
 
     case 'comments/load-error':
       return { ...state, data: {}, count: 0, waiting: false }; //@todo текст ошибки сохранять?
@@ -23,7 +23,7 @@ function reducer(state = initialState, action) {
       return { ...state, waiting: true };
 
     case 'comments/record-success':
-      return { ...state, waiting: false };
+      return { ...state, items: [...state.items, action.payload], count: state.count + 1, waiting: false };
 
     case 'comments/record-error':
       return { ...state, waiting: false }; //@todo текст ошибки сохранять?

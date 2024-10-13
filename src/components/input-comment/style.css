@@ -1,6 +1,13 @@
 .InputComment{
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.InputComment-label{
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .InputComment-btn{
@@ -12,4 +19,5 @@
   height: 80px;
   margin-bottom: 10px;
   resize: none;
+  font-size: 14px;
 }

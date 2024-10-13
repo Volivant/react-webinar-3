@@ -9,9 +9,11 @@ function ItemComment(props) {
   const cn = bem('ItemComment');
   const children = props.item.children;
   const showAnswer = props.currentComment === props.item._id ? true : false;
+  const classNameUser = props.item.author._id == props.sessionUserId ? cn('current-user') : cn('user');
+  const classNameLayer = props.layer < 14 ? cn() : cn('nonOffset')
 
   return (
-    <div className={cn()}>
+    <div className={classNameLayer}>
       <div className={cn('single')}>
         <div className={cn('head')}>
           <div className={cn('user')}>{props.item.author.profile.name}</div>
@@ -21,7 +23,7 @@ function ItemComment(props) {
         </div>
         <div className={cn('text')}>{props.item.text}</div>
         <button className={cn('btn')} onClick={() => onAnswer(props.item._id, props.item.author.profile.name)}>{labelAnswer}</button>
-        {showAnswer && props.inputComment}
+
       </div>
 
       {/* рекурсивно вызываем себя же */}
@@ -33,9 +35,11 @@ function ItemComment(props) {
             currentComment={props.currentComment}
             inputComment = {props.inputComment}
             onAnswer={onAnswer}
+            sessionUserId = {props.sessionUserId}
+            layer = {props.layer+1}
           />)
       }
-
+      {showAnswer && <div className={cn('input')}>{props.inputComment}</div>}
     </div>
   );
 }

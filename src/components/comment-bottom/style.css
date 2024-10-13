@@ -1,5 +1,7 @@
 .CommentBottom_margin_two {
-  margin: 0 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding-bottom: 20px;
 }
 
 .CommentBottom_margin_right {

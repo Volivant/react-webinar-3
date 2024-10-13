@@ -1,9 +1,9 @@
-import { memo, useState } from 'react';
+import { memo, useState, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { cn as bem } from '@bem-react/classname';
 import './style.css';
 
-function InputComment(
+const InputComment = forwardRef((
   {
     title = 'Новый ответ',
     onSend = () => {},
@@ -15,7 +15,7 @@ function InputComment(
     token,
     type = "comment",
     showCancel = true,
-  }) {
+  }, ref) => {
 
   const cn = bem('InputComment');
   const [text, setText] = useState('')
@@ -24,7 +24,7 @@ function InputComment(
   }
 
   return (
-    <div className={cn()}>
+    <div ref = {ref} className={cn()}>
       <label className={cn('label')}>{title}</label>
       <textarea
         className={cn('text')}
@@ -37,7 +37,7 @@ function InputComment(
       </div>
     </div>
   );
-}
+});
 
 InputComment.propTypes = {
   title: PropTypes.string,

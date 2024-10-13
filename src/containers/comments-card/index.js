@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useRef, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector as useSelectorStore } from 'react-redux';
 import useSelector from "../../hooks/use-selector";
@@ -29,8 +29,8 @@ function CommentsCard() {
   const select = useSelectorStore(
     state => ({
       waiting: state.comments.waiting,
-      comments: state.comments.data.items,
-      commentsCount: state.comments.data.count,
+      comments: state.comments.items,
+      commentsCount: state.comments.count,
       currentComment: state.comments.current,
       currentUser: state.comments.currentUser,
       articleId: state.article.data._id,
@@ -42,19 +42,36 @@ function CommentsCard() {
     state => ({
       sessionExist: state.session.exists,
       token: state.session.token,
+      sessionUserId: state.session.user._id,
     }),
   );
 
   const { t } = useTranslate();
 
   const onAddComment= (id, token, type, text) => {
-    dispatch(commentsActions.record(id, token, type, text));
-    dispatch(commentsActions.load(params.id));
+    if (text.trim().length > 0) {
+      dispatch(commentsActions.record(id, token, type, text));
+      // dispatch(commentsActions.load(params.id));
+    }
+
   }
+
+  const inputCommentRef = useRef(null);
+
+  const onClickAnswer = (_id, user) => {
+    dispatch(commentsActions.setCurrent(_id, user));
+    if (inputCommentRef.current) {
+      inputCommentRef.current.scrollIntoView();
+    }
+
+  }
+
+
 
   const callbacks = {
     // Установка текущего комментария
-    setCurrentComment: useCallback((_id, user) => dispatch(commentsActions.setCurrent(_id, user)), [store]),
+    // setCurrentComment: useCallback((_id, user) => dispatch(commentsActions.setCurrent(_id, user)), [store]),
+    setCurrentComment: useCallback((_id, user) => onClickAnswer(_id, user), [store]),
     onSignIn: useCallback(() => {
       navigate('/login', { state: { back: location.pathname } });
     }, [location.pathname]),
@@ -64,6 +81,7 @@ function CommentsCard() {
 
   const inputCommentComponent = selectState.sessionExist
     ? <InputComment
+        ref = {inputCommentRef}
         onSend = {callbacks.recordComment}
         onCancel={callbacks.setCurrentComment}
         defaultText={'Мой ответ для ' + select.currentUser}
@@ -85,8 +103,10 @@ function CommentsCard() {
           currentComment={select.currentComment}
           inputComment = {inputCommentComponent}
           onAnswer={callbacks.setCurrentComment}
-        />)
-      ]
+          sessionUserId = {selectState.sessionUserId}
+          layer = {1}
+        />
+      )]
     :
       null;
 

@@ -14,7 +14,7 @@ export default {
           url: `/api/v1/comments?fields=items(_id,text,dateCreate,author(profile(name)),parent(_id,_type),isDeleted),count&limit=*&search[parent]=${id}`,
         });
         // Комментариии загружены успешно
-        dispatch({ type: 'comments/load-success', payload: { data: res.data.result } });
+        dispatch({ type: 'comments/load-success', payload: { items: res.data.result.items, count:  res.data.result.count} });
 
       } catch (e) {
         //Ошибка загрузки
@@ -49,7 +49,7 @@ export default {
       dispatch({ type: 'comments/record-start' });
       try {
         const res = await services.api.request({
-          url: `/api/v1/comments`,
+          url: `/api/v1/comments?fields=_id,text,dateCreate,author(profile(name)),parent(_id,_type)`,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -57,9 +57,8 @@ export default {
           },
           body: JSON.stringify(data),
         });
-
         // Комментариии загружены успешно
-        dispatch({ type: 'comments/record-success', payload: { data: res.data.result }});
+        dispatch({ type: 'comments/record-success', payload: res.data.result});
 
       } catch (e) {
         //Ошибка загрузки
